@@ -74,7 +74,6 @@ const stopGame = (status) => {
   document.getElementById("keyboard").remove();
   document.getElementById("quit").remove();
 
-
   const word = sessionStorage.getItem("word");
 
   if (status === "win") {
@@ -86,17 +85,15 @@ const stopGame = (status) => {
     document.getElementById(
       "game",
     ).innerHTML += `<h2 class='result-header lose'>You lost :(</h2>`;
-  } else if (status === 'quit'){
-    document.getElementById('hangman-img').remove()
-    logoH1.classList.remove('logo-sm')
+  } else if (status === "quit") {
+    document.getElementById("hangman-img").remove();
+    logoH1.classList.remove("logo-sm");
   }
-
 
   document.getElementById(
     "game",
   ).innerHTML += `<p>The word was: <span class="result-word">${word}</span></p><button id="play-again" class="button-main px-5 py-2 mt-5">Play again</button>`;
   document.getElementById("play-again").onclick = startGame;
-
 };
 
 export const startGame = () => {
@@ -123,11 +120,14 @@ export const startGame = () => {
   gameDiv.prepend(hangmanImg);
 
   gameDiv.appendChild(keyboardDiv);
-  gameDiv.insertAdjacentHTML('beforeend', '<button id="quit" class="button-ordinary px-2 py-1">Quit</button>')
-  document.getElementById('quit').onclick = () => {
-    const isSure = confirm('Are you sure you want to quit and lose progress?')
-    if (isSure){
-      stopGame('quit')
+  gameDiv.insertAdjacentHTML(
+    "beforeend",
+    '<button id="quit" class="button-ordinary px-2 py-1">Quit</button>',
+  );
+  document.getElementById("quit").onclick = () => {
+    const isSure = confirm("Are you sure you want to quit and lose progress?");
+    if (isSure) {
+      stopGame("quit");
     }
-  }
+  };
 };
